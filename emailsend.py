@@ -6,7 +6,7 @@
 # Author(s): Grant McGovern
 # Date: Tue 6 Jan 2015 
 #
-# URL: www.github.com/g12mcgov/studybug
+# URL: www.github.com/gsheni/StudyBug
 #
 # ~ Setups the email template and functionality ~
 #
