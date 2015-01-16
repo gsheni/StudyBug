@@ -81,7 +81,7 @@ To run, simply open up a Terminal and execute:
 
 Currently, StudyBug is being run as a nightly job via [Heroku](http://www.heroku.com). Heroku is pretty easy to setup and has the advantage that uses <code>git</code> to commit code. Heroku also has a nice Scheduler add-on and awesome logging configurations, making it the best possible choice. 
 
-However, you can use really whatever you like. You could schedule StudyBug via Cron, or even host it on a cloud-service such as Amazon EC2, etc...
+However, you can use really whatever you like. You could schedule StudyBug via Cron, or even host it on a cloud-service such as Amazon EC2, Cloud Foundry, etc...
 
 
 Logging
