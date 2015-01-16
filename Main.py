@@ -71,11 +71,12 @@ def main():
 	# Discovers available rooms
 	rooms = availability(room, HTML, startTime, endTime)
 
-	# Create a threading pool
+
 	if not rooms:
 		logger.warning(" no available rooms at all")
 		return
 
+	# Creates a list of User objects, each with 4 time-slots to book
 	users = matchUsers(rows, rooms)
 
 	for user in users:
@@ -84,10 +85,10 @@ def main():
 	if not users:
 	 	logger.warning(" no rooms for time constraint")
 	 	return
-	 	
 	else:
 		logger.info(" total users: " + str(len(users)))
-		logger.info(" creating thread pool... ")	
+		logger.info(" creating thread pool... ")
+		# Create a threading pool	
 	 	pool = Pool(processes=4)
 	 	pool.map(bookRooms, users)
 
@@ -98,7 +99,7 @@ def main():
 	# Send email with our reserved rooms
 	sendEmail(confirmed_times, room, email, password, startTime, endTime)
 
-	logger.info("--------------------")
+	logger.info("------------------------")
 
 def bookRooms(user):
 	logger.info(" " + user.username + " - booking rooms")
@@ -188,6 +189,9 @@ def htmlFetch(url):
 	logger.info(" requesting " + url)
 	page = urllib2.urlopen(url) 
 	soup = BeautifulSoup(page.read())
+
+	if soup:
+		logger.info( "recieved HTML")	
 	
 	return soup
 
@@ -239,6 +243,8 @@ def availability(room, soup, startTime, endTime):
 
 	# Get the first element on the grid
 	starting_time = parseTime(blocks[0].find('span', {'class': 'time-slot'}).get_text())
+
+	# Get the last element on the grid
 	ending_time = parseTime(blocks[-1].find('span', {'class': 'time-slot'}).get_text())
 
 	# If we configured a time later than the last possible one, limit it
@@ -248,12 +254,17 @@ def availability(room, soup, startTime, endTime):
 	# Calculate our starting time point by finding the distance between the two times.
 	difference = start - starting_time
 
-	# Breaks up the difference into half-hour blocks
-	halfHours = (difference.seconds / 60 / 60)*2
+	# If by some chance, our xpaths start at the time we've configured, we don't need
+	# calculate the half hours because the xpaths we want to click on will start at 0.
+	if not difference:
+		i = 0
+	else:
+		# Breaks up the difference into half-hour blocks
+		halfHours = (difference.seconds / 60 / 60)*2
 
-	## Increment i (our XPath index until we hit the startime time)
-	i = 1
-	while (i != halfHours): i += 1 	
+		## Increment i (our XPath index until we hit the startime time)
+		i = 1
+		while (i != halfHours): i += 1 	
 	
 	for block in blocks:
 		status = ' '.join(block.get('class'))
@@ -301,7 +312,6 @@ def matchUsers(rows, rooms):
 	
 	userdicts = []
 
-	#for row, room in map(None, rows, rooms):
 	for row, room in zip(rows, rooms):
 		userdicts.append({
 				"username": row[0], 
