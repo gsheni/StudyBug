@@ -66,11 +66,7 @@ Thanks,
 
 StudyBug 
 
------------------------------------------------------------------------------------------------
-~ a grantmcgovern build ~	
------------------------------------------------------------------------------------------------
-
-Check out the project page at: https://github.com/g12mcgov/StudyBug
+Check out the project page at: https://github.com/gsheni/StudyBug
 
 
 """ % (newdate, length,'\n'.join(confirmed_rooms).replace('Reserved: ', '').encode('utf-8')) 
