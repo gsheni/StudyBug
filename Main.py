@@ -2,10 +2,9 @@
 
 # Name: StudyBug 
 # Author(s): Grant McGovern & Gaurav Sheni
-# Date: 16 March 2013
+# Date Created: 16 March 2013
 #
-# URL: www.github.com/g12mcgov/studybug
-#
+# URL: https://github.com/gsheni/StudyBug
 #
 
 import os
