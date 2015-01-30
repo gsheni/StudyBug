@@ -6,7 +6,7 @@
 # Author(s): Grant McGovern
 # Date: Tue 6 Jan 2015 
 #
-# URL: www.github.com/gsheni/StudyBug
+# URL: www.github.com/g12mcgov/studybug
 #
 # ~ Setups the email template and functionality ~
 #
@@ -66,7 +66,11 @@ Thanks,
 
 StudyBug 
 
-Check out the project page at: https://github.com/gsheni/StudyBug
+-----------------------------------------------------------------------------------------------
+~ a grantmcgovern build ~	
+-----------------------------------------------------------------------------------------------
+
+Check out the project page at: https://github.com/g12mcgov/StudyBug
 
 
 """ % (newdate, length,'\n'.join(confirmed_rooms).replace('Reserved: ', '').encode('utf-8')) 

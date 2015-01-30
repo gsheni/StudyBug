@@ -4,7 +4,7 @@
 # Author(s): Grant McGovern & Gaurav Sheni
 # Date: 16 March 2013
 #
-# URL: www.github.com/gsheni/StudyBug
+# URL: www.github.com/g12mcgov/studybug
 #
 #
 
